@@ -1,0 +1,194 @@
+:root{
+    --cor-primaria: #333;
+    --cor-secundaria: #0556b3;
+    --cor-secundaria-hover: #3977bb;
+    --cor-acento-ocupado: #ff4d4d;
+    --cor-acento-selecionado: #4caf50;
+    --cor-texto: #f4f4f4
+}
+
+/* Reset básico para remover margens e paddings padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilo global */
+body {
+    line-height: 1.6;
+    color: var(--cor-primaria);
+    background-color: var(--cor-texto);
+    padding: 20px;
+    font-size: 16px;
+}
+
+header {
+    background: var(--cor-primaria);
+    color: var(--cor-texto);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #0556b3;
+}
+
+/* Estilo para as seções principais */
+main {
+    margin-top: 30px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--cor-texto);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--cor-primaria);
+    text-align: center;
+}
+
+section p {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.onibus-container {
+    display: flex;
+    justify-content: center;
+    background-image: url("assets/bus_bg.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    rotate: 180deg;
+}
+
+.onibus_full {
+    padding: 25px 20px 25px 0;
+    width: 850px;
+    rotate: 180deg;
+
+}
+
+.onibus{
+    display: grid;
+    grid-template-columns: repeat(11, 40px);
+    gap: 2px;
+    padding-left: 250px;
+}
+
+.assento {
+    width: 35px;
+    height: 35px;
+    background: var(--cor-secundaria);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.assento:hover {
+    background: rgba(76, 175, 80, 0.74);
+}
+
+.assento.reservado {
+    background-color: var(--cor-acento-ocupado);
+    cursor: not-allowed;
+}
+
+.assento.selecionado {
+    background-color: var(--cor-acento-selecionado);
+}
+
+#formulario-reserva,
+#formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#formulario-reserva label,
+#formulario-contato label {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+#formulario-reserva input,
+#formulario-contato input,
+#formulario-contato textarea {
+    padding: 10px;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+#formulario-reserva input:focus,
+#formulario-contato input:focus,
+#formulario-contato textarea:focus {
+    border-color: var(--cor-secundaria);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: var(--cor-secundaria);
+    color: var(--cor-texto);
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: center;
+}
+
+button:hover {
+    background: var(--cor-secundaria-hover);
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    background: var(--cor-primaria);
+    color: var(--cor-texto);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 1rem;
+}
