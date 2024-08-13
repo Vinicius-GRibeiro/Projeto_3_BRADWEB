@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => { // executa o script apenas quando o html terminar de carregar (DOMContentLoaded)
     const assentos = document.querySelectorAll('.assento:not(.reservado)'); // seleciona todos os elementos que possuem a classe assento, mas não a classe reservado; ou seja, todos os assentos disponíveis
     const formularioReserva = document.getElementById('formulario-reserva'); // cria uma referência ao formulário de reserva
+    const formularioContato = document.getElementById('formulario-contato');
     const assentosReservados = JSON.parse(localStorage.getItem('assentosReservados')) || []; // obtém a lista dos assentos reservados armazenados no localStorage; SE NÃO houver, inicializa um array vazio
     let valorTotal = 0.0
     let assentosSelecionados = []; // array para armazenar os assentos selecionados
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => { // executa o script apenas
     // Enviar o formulário de reserva
     formularioReserva.addEventListener('submit', (event) => {
         event.preventDefault();
-        
+
         const nome = document.getElementById('nome').value; // coleta os valores inseridos em 'nome'
         const email = document.getElementById('email').value;
 
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => { // executa o script apenas
         console.log('Reserva Confirmada:', detalhesReserva);
         valorTotal = (valorTotal).toFixed(2);
         alert(`Reserva Confirmada!\n\nNome: ${nome}\nEmail: ${email}\nAssentos: ${assentosSelecionados.join(', ')}\nValor final: R\$ ${valorTotal}`);
-        
+
         // Adicionar os assentos selecionados aos reservados no localStorage
         assentosSelecionados.forEach(numeroAssento => {
             if (!assentosReservados.includes(numeroAssento)) {
@@ -87,5 +88,24 @@ document.addEventListener('DOMContentLoaded', () => { // executa o script apenas
         assentosSelecionados = [];
         valorTotal = 0.0;
         atualizarAssentosDoArmazenamento();
+    });
+
+    formularioContato.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nome = document.getElementById('nome-contato').value; // coleta os valores inseridos em 'nome'
+        const email = document.getElementById('email-contato').value;
+        const mensagem = document.getElementById('mensagem').value;
+
+        //se nenhum assento foi selecionado
+        if (nome === '' || email === '' || mensagem === '') {
+            alert('Por favor, preencha todos os campos do formulário para entrar em contato');
+            return;
+        }
+
+        alert(`Obrigado pela mensagem, ${nome}.\nEm breve entraremos em contato, fique de olho no e-mail ${email}`);
+
+        // Resetar formulário e seleção de assentos
+        formularioContato.reset();
     });
 });
